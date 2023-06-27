@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<link rel="stylesheet" href="./main.css" />
+		<title>Document</title>
+	</head>
+	<body>
+		<div id="circle-container">
+			<div id="circle"></div>
+			<div id="line"></div>
+		</div>
+
+		<script>
+			const circleContainer = document.querySelector('#circle-container')
+			const line = document.querySelector('#line')
+
+			circleContainer.addEventListener('mousemove', event => {
+				const x =
+					event.clientX -
+					circleContainer.offsetLeft -
+					circleContainer.offsetWidth / 2
+				const y =
+					event.clientY -
+					circleContainer.offsetTop -
+					circleContainer.offsetHeight / 2
+				const hypotenuse = Math.sqrt(x * x + y * y)
+
+				line.style.transform = `rotate(${Math.atan2(y, x)}rad)`
+				line.style.height = `${hypotenuse}px`
+			})
+		</script>
+	</body>
+</html>
